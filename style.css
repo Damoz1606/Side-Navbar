@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik');
+
+:root {
+    --foreground-light: #fff;
+    --foreground-dark: #242424;
+
+    --primary-color-hex: rgb(243, 164, 79);
+    --secondary-color-hex: rgb(79, 243, 87);
+    --ternary-color-hex: rgb(79, 243, 175);
+    --fourth-color-hex: rgb(199, 79, 243);
+    --fifth-color-hex: rgb(79, 136, 243);
+
+    --size: 45px;
+}
+
+[theme=primary] {
+    --main-color: var(--primary-color-hex);
+}
+
+[theme=secondary] {
+    --main-color: var(--secondary-color-hex);
+}
+
+[theme=ternary] {
+    --main-color: var(--ternary-color-hex);
+}
+
+[theme=fourth] {
+    --main-color: var(--fourth-color-hex);
+}
+
+[theme=fifth] {
+    --main-color: var(--fifth-color-hex);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+a {
+    all: unset;
+    cursor: pointer;
+    /* color: var(--foreground-light); */
+}
+
+svg {
+    width: 24px;
+    height: 24px;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--main-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .3s ease-in-out;
+}
+
+.menu {
+    position: relative;
+    padding: 0.5rem;
+    background: var(--foreground-light);
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    box-shadow: 0 1px 8px #4949497a;
+}
+
+.menu-item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: var(--foreground-dark);
+    width: var(--size);
+    height: var(--size);
+    z-index: 1;
+}
+
+.menu-item.active {
+    color: var(--foreground-light);
+}
+
+.menu-item .tooltip {
+    position: absolute;
+    padding: 0.25rem 1rem;
+    right: 0;
+    background-color: var(--foreground-light);
+    border-radius: 6px;
+    color: var(--foreground-dark);
+    opacity: 0;
+    font-weight: 100;
+    letter-spacing: 1.5px;
+    transform: translateX(0%) scaleX(0);
+    box-shadow: 0 1px 6px #4949497a;
+    transition:
+        opacity .2s ease-in,
+        transform .2s ease-in;
+}
+
+.menu-item:hover>.tooltip {
+    opacity: 1;
+    transform: translateX(100%) scaleX(1);
+}
+
+.glider {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 100%;
+    background: var(--main-color);
+
+    transition: transform .3s ease-in,
+        background-color .3s ease-in-out;
+
+    z-index: 0;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
